@@ -8,7 +8,7 @@ def onOnToOff(channel, sampleIndex, val, prev):
 	op('serial1').send(";startTrack(\"1\");")
 	return
 ```
-This will send ";startTrack(\"1\");" on the Serial connection to the Satellite and will start the track that is currently loaded on slot 1. You can also use custom commands or create multiple instances of the Chop Execute to trigger different tracks whenever you want.
+When you press the button, it will send ";startTrack(\"1\");" on the Serial connection to the Satellite and start the track that is currently loaded on slot 1. You can also use custom commands or create multiple instances of the Chop Execute to trigger different tracks whenever you want.
 
 Make sure the Baud Rate is set to 115200 and the correct port is selected.
 
