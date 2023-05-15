@@ -4,6 +4,7 @@ Simple TouchDesigner demo connected to the Hapticlabs Satellite using a [Chop Ex
 Inside the Chop Execute is the following code: 
 ``` python
 def onOnToOff(channel, sampleIndex, val, prev):
+
 	# start a track
 	op('hapticlabs').module.startTrack("1")
 	
@@ -12,6 +13,7 @@ def onOnToOff(channel, sampleIndex, val, prev):
 	
 	# start a custom pulse
 	op('hapticlabs').module.pulse('B', 1, 200000)
+	
 	return
 ```
 `op('hapticlabs').module.startTrack("1")` will start the track that is currently loaded on slot 1. You can also use custom commands or create multiple instances of the Chop Execute to trigger different tracks whenever you want.
