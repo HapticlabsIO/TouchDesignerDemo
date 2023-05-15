@@ -1,15 +1,14 @@
 # TouchDesignerDemo
-Simple TouchDesigner Demo with the Hapticlabs Satellite
+Simple TouchDesigner demo connected to the Hapticlabs Satellite using a [Chop Execute](https://derivative.ca/UserGuide/CHOP_Execute_DAT) in Combination with the [Serial DAT](https://derivative.ca/UserGuide/Serial_DAT). 
 
-We are using a Chop Execute in Combination with the Serial DAT. Inside the Chop Execute is the following code: 
-
+Inside the Chop Execute is the following code: 
 ``` python
 def onOnToOff(channel, sampleIndex, val, prev):
 	print(";startTrack(\"0\");")
 	op('serial1').send(";startTrack(\"1\");")
 	return
 ```
-This will send the `;startTrack(\"1\");` on the Serial connection to the Satellite, this will start the track that is currently loaded on slot 1. You can also use custom commands or create multiple instances of the Chop Execute to trigger different tracks whenever you want.
+This will send ";startTrack(\"1\");" on the Serial connection to the Satellite and will start the track that is currently loaded on slot 1. You can also use custom commands or create multiple instances of the Chop Execute to trigger different tracks whenever you want.
 
 Make sure the Baud Rate is set to 115200 and the correct port is selected.
 
