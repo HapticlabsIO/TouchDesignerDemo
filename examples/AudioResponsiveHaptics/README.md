@@ -1,4 +1,4 @@
-# Responsive Audio Haptics
+# Audio Responsive Haptics
 
 This demo shows a simple example use case where haptics are triggered when a Kick or Snare is detected in an Audio file in TouchDesigner. This will trigger an according track loaded on the Satellite.
 
