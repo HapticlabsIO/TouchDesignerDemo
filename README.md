@@ -1,6 +1,11 @@
 # TouchDesignerDemo
 Simple TouchDesigner demo connected to the Hapticlabs Satellite using a [Chop Execute](https://derivative.ca/UserGuide/CHOP_Execute_DAT) in Combination with the [Serial DAT](https://derivative.ca/UserGuide/Serial_DAT). 
 
+## Getting the Satellite ready
+Start of by importing the `hapticlabsTouchDesignerDemo.hptl` (File > Export/Import) and uploading the Project to the Satellite (Satellite > Upload Project to Satellite)
+<img width="1552" alt="Screenshot 2023-06-10 at 16 27 58" src="https://github.com/HapticlabsIO/TouchDesignerDemo/assets/34678030/4624319b-d955-48ba-8eaf-9ee163b9ccd3">
+
+## TouchDesigner
 Inside the Chop Execute is the following code: 
 ``` python
 def onOnToOff(channel, sampleIndex, val, prev):
