@@ -10,19 +10,26 @@ Inside the Chop Execute is the following code:
 ``` python
 def onOnToOff(channel, sampleIndex, val, prev):
 
-	# start a track
-	op('hapticlabs').module.startTrack("1")
+	# to use Serial
+	# op('hapticlabsSerial').module.startTrack("1")
+	# op('hapticlabsSerial').module.setAmplitudeScale(0.1)
 	
-	# start a custom vibration
-	op('hapticlabs').module.vibrate('B', 1, 120, 200000)
-	
-	# start a custom pulse
-	op('hapticlabs').module.pulse('B', 1, 200000)
-	
+	# to use TCP, make sure to bypass (turn off) the serial block to prevent TouchDesigner from connecting to the Satellite.
+	op('hapticlabsTCP').module.startTrack("1")
+	op('hapticlabsTCP').module.setAmplitudeScale(0.1)
 	return
 ```
-`op('hapticlabs').module.startTrack("1")` will start the track that is currently loaded on slot 1. You can also use custom commands or create multiple instances of the Chop Execute to trigger different tracks whenever you want.
 
-Make sure the Baud Rate is set to 115200 and the correct port is selected.
+There are two options to control the Satelite, through TCP or Serial.
 
-<img width="1440" alt="Screenshot 2023-05-15 at 15 39 46" src="https://github.com/HapticlabsIO/TouchDesignerDemo/assets/34678030/8549cced-f149-4d4a-99ae-c3aa5e897f6c">
+### 1. TCP 
+`op('hapticlabsTCP').module.startTrack("1")` will start the track that is named "1" through TCP. 
+> In this case the Satellite is connected to Hapticlabs Studio, and TouchDesigner starts tracks in Studio through TCP. This way you can keep iterating on the tracks without having to upload them to the Satellite all the time. Make sure the "serial" block is turned off to prevent TouchDesigner from trying to connect to the Satellite directly.
+<img width="1582" alt="Screenshot 2023-10-11 at 20 05 43" src="https://github.com/HapticlabsIO/TouchDesignerDemo/assets/34678030/a395702a-114b-4ffc-9c30-548452030a79">
+
+### 2. Serial
+Alternatively, you can use `op('hapticlabsSerial').module.startTrack("1")`. Make sure the "serial" block is turned on so TouchDesigner is connecting to the Satellite directly, also check that the Baud Rate is set to 115200 and the correct port is selected.
+>  If you make changes to the tracks in the Hapticlabs Studio, you need to stop the TouchDesigner project, disconnect the Satellite, connect it in the Studio and upload the Project to the Satellite (Satellite > Upload Project to Satellite).
+
+
+<img width="1582" alt="Screenshot 2023-10-11 at 20 06 21" src="https://github.com/HapticlabsIO/TouchDesignerDemo/assets/34678030/ca014168-0d70-4e43-9e7b-70e3914e207d">
